@@ -1,6 +1,14 @@
 import { Request, Response } from "express";
-import asyncHanlder from "../service/asyncHandler";
+import asyncHandler from "../service/asyncHandler";
 
-export const signUp = asyncHanlder(async (req: Request, res: Response) => {
-  //
+export const googleAuth = asyncHandler(async (req: Request, res: Response) => {
+  return res.status(200).json({ success: true });
 });
+
+export const protectedRoute = asyncHandler(
+  async (req: Request, res: Response) => {
+    return res
+      .status(200)
+      .json({ success: true, message: "This is a Protected route" });
+  }
+);
