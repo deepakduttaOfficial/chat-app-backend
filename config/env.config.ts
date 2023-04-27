@@ -3,4 +3,5 @@ export default {
   PORT: process.env.PORT || 8000,
   JWT_SECRET_AUTH: process.env.JWT_SECRET_AUTH,
   JWT_EXPIRY: process.env.JWT_EXPIRY,
+  DB_URL: process.env.DB_URL,
 };

@@ -96,6 +96,10 @@ const userSchema = new Schema<UserInterface>({
     type: Number,
   },
 
+  aboutMe:{
+    type: String
+  },
+
   isActive: Boolean,
 
 });

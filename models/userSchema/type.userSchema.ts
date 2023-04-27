@@ -24,6 +24,7 @@ export interface UserInterface {
   totalContact: number
   virtualNumber: number
   contactNumber: number
+  aboutMe: string
 }
 
 export interface UserDocument extends UserInterface, Document {

@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express, { Express } from "express";
 import cors from "cors";
+import "./config/db.config"
 
 // Cors config file
 import corsOption from "./config/cors.config";
