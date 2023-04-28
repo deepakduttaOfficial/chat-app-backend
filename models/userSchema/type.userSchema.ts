@@ -2,29 +2,30 @@ import { Document } from "mongoose";
 import AuthRoles from "../../utils/authRoles";
 
 export interface Photo {
-  photo_id: string;
-  photo_url: string;
-  photo_data: object | string;
+  photo_id?: string;
+  photo_url?: string;
+  photo_data?: object | string;
 }
 
 export interface UserInterface {
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   password: string;
-  isActive: boolean;
-  isVerified: boolean;
-  verifyToken: string;
-  loginCount: number;
-  resetPasswordToken: String;
-  resetPasswordExpires: Date;
-  profilePhoto: Photo;
-  role: AuthRoles,
+  isActive?: boolean;
+  isVerified?: boolean;
+  verifyToken?: string;
+  loginCount?: number;
+  resetPasswordToken?: String;
+  resetPasswordExpires?: Date;
+  profilePhoto?: Photo;
+  role: AuthRoles;
   googleData: object;
-  totalContact: number
-  virtualNumber: number
-  contactNumber: number
-  aboutMe: string
+  googleId: string;
+  totalContact?: number;
+  virtualNumber: number;
+  contactNumber?: number;
+  aboutMe?: string;
 }
 
 export interface UserDocument extends UserInterface, Document {

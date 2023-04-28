@@ -81,27 +81,30 @@ const userSchema = new Schema<UserInterface>({
   googleData: {
     type: Object,
   },
-  
+
+  googleId: {
+    type: String,
+  },
+
   totalContact: {
     type: Number,
-    default: 0
+    default: 0,
   },
 
   virtualNumber: {
     type: Number,
-    requied: true
+    requied: true,
   },
 
   contactNumber: {
     type: Number,
   },
 
-  aboutMe:{
-    type: String
+  aboutMe: {
+    type: String,
   },
 
   isActive: Boolean,
-
 });
 
 // bcrypt password
