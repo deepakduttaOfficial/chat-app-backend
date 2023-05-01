@@ -7,4 +7,5 @@ export default {
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID as string,
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET as string,
   COOKIE_KEY: process.env.COOKIE_KEY as string,
+  DOMAIN: process.env.DOMAIN as string,
 };

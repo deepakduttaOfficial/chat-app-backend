@@ -129,11 +129,12 @@ userSchema.methods = {
   },
 
   //generate JWT TOKEN
-  authJwtToken: function (): string {
+  authJwtToken: function (data?: object): string {
     return jwt.sign(
       {
         _id: this._id,
         role: this.role,
+        ...data,
       },
       envConfig.JWT_SECRET_AUTH as Secret,
       {

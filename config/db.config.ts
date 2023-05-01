@@ -16,7 +16,6 @@ import envConfig from "./env.config";
       console.log("DB connection failed!", err);
       process.exit(1);
     });
-    
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
     throw err;

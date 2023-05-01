@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 
-const asyncHanlder =
+const asyncHandler =
   (fn: Function) => async (req: Request, res: Response, next: NextFunction) => {
     try {
-      return await fn(req, res, next)
+      return await fn(req, res, next);
     } catch (error: any) {
       console.log(error);
       return res.status(error.code || 500).json({
@@ -13,4 +13,4 @@ const asyncHanlder =
     }
   };
 
-  export default asyncHanlder
+export default asyncHandler;

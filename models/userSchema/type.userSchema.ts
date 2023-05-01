@@ -33,6 +33,6 @@ export interface UserDocument extends UserInterface, Document {
   createdAt: Date;
   updatedAt: Date;
   comparePassword(providedPassword: string): Promise<string>;
-  authJwtToken(): string;
+  authJwtToken(tokenData?: object): string;
   generateResetPasswordToken(): string;
 }
