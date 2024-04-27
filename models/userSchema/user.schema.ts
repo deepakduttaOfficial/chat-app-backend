@@ -6,106 +6,111 @@ import crypto from "crypto";
 import { UserDocument, UserInterface } from "./type.userSchema";
 import AuthRoles from "../../utils/authRoles";
 
-const userSchema = new Schema<UserInterface>({
-  firstName: {
-    type: String,
-    required: [true, "Enter your first name"],
-    trim: true,
-    maxLength: [25, "Name must be under 10 chanrecter"],
-  },
+const userSchema = new Schema<UserInterface>(
+  {
+    firstName: {
+      type: String,
+      required: [true, "Enter your first name"],
+      trim: true,
+      maxLength: [25, "Name must be under 10 character"],
+    },
 
-  lastName: {
-    type: String,
-    required: [true, "Enter your last name"],
-    trim: true,
-    maxLength: [25, "Name must be under 10 chanrecter"],
-  },
+    lastName: {
+      type: String,
+      required: [true, "Enter your last name"],
+      trim: true,
+      maxLength: [25, "Name must be under 10 character"],
+    },
 
-  email: {
-    type: String,
-    unique: true,
-    required: [true, "Enter your email"],
-    trim: true,
-  },
+    email: {
+      type: String,
+      unique: true,
+      required: [true, "Enter your email"],
+      trim: true,
+    },
 
-  password: {
-    type: String,
-    minLength: [4, "Password must be at least 4 charecter long"],
-    required: [true, "Password is required"],
-    trim: true,
-  },
+    password: {
+      type: String,
+      minLength: [4, "Password must be at least 4 charecter long"],
+      required: [true, "Password is required"],
+      trim: true,
+    },
 
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
 
-  verifyToken: {
-    type: String,
-    default: null,
-  },
+    verifyToken: {
+      type: String,
+      default: null,
+    },
 
-  role: {
-    type: String,
-    enum: Object.values(AuthRoles),
-    default: AuthRoles.USER,
-  },
+    role: {
+      type: String,
+      enum: Object.values(AuthRoles),
+      default: AuthRoles.USER,
+    },
 
-  loginCount: {
-    type: Number,
-    default: 0,
-  },
+    loginCount: {
+      type: Number,
+      default: 0,
+    },
 
-  resetPasswordToken: {
-    type: String,
-    default: null,
-  },
+    resetPasswordToken: {
+      type: String,
+      default: null,
+    },
 
-  resetPasswordExpires: {
-    type: Date,
-    default: null,
-  },
+    resetPasswordExpires: {
+      type: Date,
+      default: null,
+    },
 
-  profilePhoto: {
-    photo_id: {
+    profilePhoto: {
+      photo_id: {
+        type: String,
+      },
+      photo_url: {
+        type: String,
+      },
+      photo_data: {
+        type: String,
+      },
+    },
+
+    googleData: {
+      type: Object,
+    },
+
+    googleId: {
       type: String,
     },
-    photo_url: {
+
+    totalContact: {
+      type: Number,
+      default: 0,
+    },
+
+    virtualNumber: {
+      type: Number,
+      requied: true,
+    },
+
+    contactNumber: {
+      type: Number,
+    },
+
+    aboutMe: {
       type: String,
     },
-    photo_data: {
-      type: String,
-    },
-  },
 
-  googleData: {
-    type: Object,
+    isActive: Boolean,
   },
-
-  googleId: {
-    type: String,
-  },
-
-  totalContact: {
-    type: Number,
-    default: 0,
-  },
-
-  virtualNumber: {
-    type: Number,
-    requied: true,
-  },
-
-  contactNumber: {
-    type: Number,
-  },
-
-  aboutMe: {
-    type: String,
-  },
-
-  isActive: Boolean,
-});
+  {
+    timestamps: true,
+  }
+);
 
 // bcrypt password
 userSchema.pre("save", async function (next) {

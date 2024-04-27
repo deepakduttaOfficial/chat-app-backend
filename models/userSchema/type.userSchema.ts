@@ -26,6 +26,8 @@ export interface UserInterface {
   virtualNumber: number;
   contactNumber?: number;
   aboutMe?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface UserDocument extends UserInterface, Document {

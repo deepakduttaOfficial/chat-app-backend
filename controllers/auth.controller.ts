@@ -42,8 +42,8 @@ export const signUp = asyncHandler(async (req: Request, res: Response) => {
 
   const newUserData: UserInterface = {
     email: user.emails[0].value, // Unique
-    firstName: user.name?.familyName,
-    lastName: user.name?.givenName,
+    firstName: user.name?.givenName,
+    lastName: user.name?.familyName,
     password: initialPasswordSetUp,
     isVerified: true,
     role: AuthRoles.USER,
@@ -64,7 +64,7 @@ export const signUp = asyncHandler(async (req: Request, res: Response) => {
   };
 
   res.redirect(
-    envConfig.DOMAIN + "/credencial?token=" + newUser.authJwtToken(tokenData)
+    envConfig.DOMAIN + "/api/auth/credential?token=" + newUser.authJwtToken(tokenData)
   );
 });
 
