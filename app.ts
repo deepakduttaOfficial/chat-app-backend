@@ -1,9 +1,11 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import express, { Express } from "express";
-import http from "http";
-import { Server, Socket } from "socket.io";
+import { app, express, io, server } from "./config/socket.io.config";
+import { Socket } from "socket.io";
 import cors from "cors";
+import passport from "passport";
+import userSocketConnection from "./socketConnection/userSocketConnection";
+import chatSocketConnection from "./socketConnection/chatSocketConnection";
 import "./config/env.config";
 import "./config/db.config";
 
@@ -15,24 +17,6 @@ import Auth from "./routes/auth.route";
 
 // Passport js config file
 import "./config/passport.config";
-import passport from "passport";
-
-const app: Express = express();
-const server = http.createServer(app);
-const io = new Server(server);
-
-io.on("connection", (socket: Socket) => {
-  console.log("A new client connected");
-
-  // Emit a message to the connected client
-  socket.emit("connect", {
-    message: "Welcome! You are now connected to the server.",
-  });
-  
-  socket.on("message", (data) => {
-    console.log("Received message:", data);
-  });
-});
 
 // Middleware
 app.use(cors(corsOption));
@@ -47,5 +31,13 @@ app.use(`/api/auth`, Auth);
 app.get("/", (_, res) => {
   res.send("Hello World");
 });
+
+// Socket io connection
+const onConnection = (socket: Socket) => {
+  userSocketConnection(io, socket);
+  chatSocketConnection(io, socket);
+};
+
+io.on("connection", onConnection);
 
 export default server;
