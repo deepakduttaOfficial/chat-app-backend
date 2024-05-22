@@ -12,13 +12,12 @@ import {
 import envConfig from "./env.config";
 const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = envConfig;
 
-// Google
 passport.use(
   new GoogleStrategy(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "/api/auth/google/redirect",
+      callbackURL: "",
     },
     (accessToken, refreshToken, profile: Profile, done: VerifyCallback) => {
       done(null, profile);
@@ -28,6 +27,7 @@ passport.use(
 
 // Json-web-token
 const options: StrategyOptions = {
+  // jwtFromRequest: (req) => req.cookies.auth_token,
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: envConfig.JWT_SECRET_AUTH,
 };

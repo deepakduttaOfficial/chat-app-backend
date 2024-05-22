@@ -28,6 +28,8 @@ export interface UserInterface {
   aboutMe?: string;
   createdAt?: Date;
   updatedAt?: Date;
+  channelList?: string[];
+  groupChannelList?: string[];
 }
 
 export interface UserDocument extends UserInterface, Document {

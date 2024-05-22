@@ -106,6 +106,13 @@ const userSchema = new Schema<UserInterface>(
     },
 
     isActive: Boolean,
+
+    channelList: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Channel",
+      },
+    ],
   },
   {
     timestamps: true,
